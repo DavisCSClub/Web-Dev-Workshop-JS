@@ -15,8 +15,26 @@
   
   <body>
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <style>
+     .rating-circle {
+      height: 2em;
+      width: 2em;
+      border: .1em solid black;
+      border-radius: 1.1em;
+      display: inline-block;
+      margin: 0;
+      padding: .1em;
+     }
+
+     .rating-hover {
+      background-color: yellow;
+     }
+
+     .rating-chosen {
+      background-color: green;
+     }
+    </style>
     <div class="container">
       <h1>My Personal Page</h1>
       <ul>
@@ -66,6 +84,16 @@
           </li>
         </ul>
       </p>
-  </div>
+      
+      <h3>Rate this Webpage</h3>
+      <div id="rating-container">
+       <div class="rating-circle"></div>
+       <div class="rating-circle"></div>
+       <div class="rating-circle"></div>
+       <div class="rating-circle"></div>
+       <div class="rating-circle"></div>
+      </div>
+    </div>  
+  
   </body>
 </html>

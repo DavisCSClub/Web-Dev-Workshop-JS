@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Web Development Workshop: Javascript</title>
+    <title>Web Development Workshop: JQuery Part 1</title>
 
     <meta name="description" content="Javascript workshop with exercises">
     <meta name="author" content="Arjun Bharadwaj">
@@ -51,105 +51,195 @@
         <section>
           <h4><em>Goals of this workshop</em></h4>
           <ul>
-            <li>Understanding the role of JS in making websites</li>
+            <li>Understanding the role of JQuery in making websites</li>
           </ul>
+        </section>
+        
+        <section>
+          <h2>Reviewing - HTML</h2>
+          <pre><code data-trim>
+&lt;p id=&quot;test&quot;&gt;This is a test&lt;/p&gt;
+&lt;li class=&quot;vertical&quot;&gt;A list item&lt;/li&gt;
+           </code></pre>
         </section>
        
        <section>
-         <h2>Reviewing</h2>
+         <h2>Reviewing - CSS</h2>
          <pre><code data-trim>
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-  &lt;head&gt;
-    ...
-  &lt;/head&gt;
-  &lt;body&gt;
-    ...
-  &lt;/body&gt;
-&lt;/html&gt;
+#test {
+  color: blue;
+}
+
+.vertical {
+  background-color: green;
+  font-size: 12pt;
+}
         </code></pre>
        </section>
        
-
-        <!-- Example of nested vertical slides -->
-        <section>
-          <h2>New Structural Tags</h2>
-          <ul>
-            <li>&lt;header&gt;</li>
-            <li>&lt;footer&gt;</li>
-            <li>&lt;nav&gt;</li>
-            <li>&lt;article&gt;</li>
-            <li>&lt;section&gt;</li>
-            <li>&lt;time&gt;</li>
-            <li>&lt;aside&gt;</li>
-            <li>&lt;figure&gt;, &lt;figcaption&gt;</li>
-            <li>&lt;main&gt;</li>
-          </ul>
-        </section>
-        
-               <section>
-              <section>
-                <h2>Two ways to custom style elements</h2>
-                <h6>By ID's</h6>
-              <pre><code data-trim>
-         &lt;p id=&quot;sample_paragraph&quot;&gt;This is a sample paragraph&lt;/p&gt;
-           </code></pre>
-   
-         <pre><code data-trim>
-         /* Then in the CSS */
-         #sample_paragraph {
-           color: red;
-         }
-          </code></pre>   
-              </section>
+      <section>
+        <h2>Reviewing - JS</h2>
+        <pre><code data-trim>
+ document.getElementById("test").style.color = "blue";
+ document.getElementByClass("vertical").style.fontsize = 12pt;
+       </code></pre>
+      </section>
       
-                   <section>
-                     <h2>By Classes</h2>
-                   <pre><code data-trim>
-        &lt;ul class=&quot;squareList&quot;&gt;
-          &lt;li&gt;Bla1&lt;/li&gt; 
-          &lt;li&gt;Bla2&lt;/li&gt;
-        &lt;/ul&gt;
-                </code></pre>
-              <pre><code data-trim>
-        /* Then in the CSS */
-        .squareList {
-          list-style-type: square;
-        }
-               </code></pre>   
-                   </section>
-              </section>
-              
-            <section>
-              Let's play around with javascript!
-            </section>  
-        
-        <section>
-          <pre><code data-trim>
-      &lt;script&gt;
-      function controlStuff() {
-      document.getElementById("demo").innerHTML = "Hello World";
-      }
-      &lt;/script&gt;
-    </code></pre>
-        </section>
+      
+      <section>
+        <h1>What about JQuery? Why need it?</h1>
+        <ul>
+          <li>Simplicity is power</li>
+          <li>Cross-browser compatibility automatically taken</li>
+        </ul>
+      </section>
+      
+      <section>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Logo_jQuery.svg/2000px-Logo_jQuery.svg.png" />
+      </section>
+      
+      <section>
+        <h1>Getting started..</h1>
+      </section>
+      
+      <section>
+        <h1>The Magic of $</h1>
+      </section>
+      
+      <section>
+        <h2>On Page load...</h2>
+         <pre><code data-trim>
+  $(document).ready(function() {
+  	// code here
+  });
+  
+  //OR
+  
+  $(function() {
+  	// code here
+  });
+        </code></pre>
+      </section>
+      
+      
+      <section>
+        <h2>Using CSS Selectors with JQuery</h2>
+         <pre><code data-trim>
+$('h1') // selects all h1 elements
+$('.class-name') // selects all elements with a class of class-name
+$('#demo') // selects all elements with an id of demo
+        </code></pre>        
+      </section>
+       
+      <section>
+        <h2>Attribute based Selectors</h2>
+         <pre><code data-trim>
+// selects all **h1** elements with an attribute matching the specified value
+$('h1[demo-attribute="demo-value"]')
+$('[class^="col"]') // Find all elements that start with a string
+$('[class*="md"]') // Find all elements where the value contains a string
+        </code></pre>        
+      </section>
+      
+    <section>
+      <h2>Positional Selectors</h2>
+       <pre><code data-trim>
+// Selects all a elements that are direct descendants nav element
+$('nav > a')
+// Selects all a elements that are descendants nav element
+// The elements can appear anywhere inside of the element listed first
+$('nav a')
+      </code></pre>        
+    </section>
+    
+    <section>
+      <h2>Navigating the DOM Tree - Children</h2>
+       <pre><code data-trim>
+// search through, all **direct** descendents of the currently selected item
+currentElement.children('a[href^="http://"]');
+// All descendants
+currentElement.find('a[href^="http://"]')
+      </code></pre>        
+    </section>
+       
+       
+    <section>
+      <h2>Navigating the DOM Tree - Siblings</h2>
+       <pre><code data-trim>
+// search through, all siblings after current element
+$('#provide-address').nextAll('input').attr('disabled', 'true');
+// search through, all siblings before current element
+$('#provide-address').prevAll('input').attr('disabled', 'true');
+      </code></pre>        
+    </section>
+    
+    
+    <section>
+      <h2>Indexing</h2>
+      <pre><code data-trim>
+// Finding the index of an item
+var currentElement = $('some selector');
+var parent = $('some selector');
+var index = parent.children().index(currentElement);
+
+
+// Finding an item by its position
+var parent = $('some selector');
+var element = parent.children().get(index);
+
+
+// BUT CAREFUL. GET RETURNS DOM ELEMENT, so
+var parent = $('some selector');
+var element = parent.children().get(index);
+      ...
+      </code></pre>
+    </section>
+    
+    <section>
+      <h2>Adding/Removing Class</h2>
+            <pre><code data-trim>
+addClass()
+removeClass()
+        </code></pre>
+    </section>
+       
+    <section>
+      <h2>Changing attributes</h2>
+            <pre><code data-trim>
+$('selector').attr('attribute-name', 'new value');
+        </code></pre>
+    </section>
+    
+    <section>
+      <h2>Modifying elements</h2>
+            <pre><code data-trim>
+text()
+html()
+        </code></pre>
+    </section>
+       
+    <section>
+      <h2>Basic Event Handlers</h2>
+            <pre><code data-trim>
+click()
+hover()
+mouseout()
+        </code></pre>
+    </section>
+      
+
         
         <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-          <h2>Now, for the exercise</h2>
+          <h2>Exercise: Ratings Meter</h2>
           <ol>
-            <li>Create a <code>button</code> that when clicked displays the time.</li>
-            <li>Create a function <code>virusPopup()</code> that displays the message "There is a virus on your comp!" after 3 seconds the page loads. Use the library function <code>setTimeout()</code> for this.</li>
-            <li>Write the code so that on a <code>mouseover</code> the text color of Hobbies title changes to red. Use the <code>onmouseover</code> attribute for this and <code>style.color</code> as a value.</li>
-            <li>Create a button that dynamically inserts paragraph tags with text onto the page</li>
-            <li>Modify the previous problem so that as soon as the button is pressed, it shown a new fact about you</li>
+            <li>The user hovers over a circle. That circle, and all the ones to its left, must be highlighted.</li>
+            <li>To implement this, we must first discover what circle the user has moved their mouse over.</li>
+            <li>Then, we need to select that circle, and the ones to the left of it in the collection of circles.</li>
+            <li>We must highlight those circles. This can be done by adding a class to those circles. The class provided is <code>rating-chosen</code>.</li>
+            <li>We must ensure the circles to the right aren't highlighted. You could do this by removing the <code>rating-chosen</code> class.</li>
           </ol>
         </section>
         
-        
-       
-       
-        
-      
       </section>
       
       </div>
